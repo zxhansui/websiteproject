@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Diary</title>
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0f172a;
+      overflow-x:hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+
+    nav{
+      width:100%;
+      background:#111827;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 8%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      border-bottom:2px solid #3b82f6;
+    }
+
+    .logo{
+      color:#ffffff;
+      font-size:2rem;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      gap:35px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:14px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#60a5fa;
+    }
+
+    /* ===== HERO SECTION ===== */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:120px 8% 50px;
+
+      background:linear-gradient(
+        135deg,
+        #0f172a,
+        #111827,
+        #2563eb
+      );
+    }
+
+    .hero-text{
+      max-width:600px;
+      color:white;
+    }
+
+    .hero-text h3{
+      font-size:2rem;
+      font-weight:400;
+      margin-bottom:15px;
+    }
+
+    .hero-text h1{
+      font-size:5rem;
+      line-height:90px;
+      font-weight:800;
+      margin-bottom:20px;
+      color:white;
+    }
+
+    .hero-text h2{
+      color:#60a5fa;
+      font-size:2rem;
+      margin-bottom:25px;
+      letter-spacing:2px;
+    }
+
+    .hero-text p{
+      font-size:18px;
+      line-height:32px;
+      margin-bottom:35px;
+      color:#dbeafe;
+    }
+
+    /* ===== BUTTON ===== */
+
+    .btn{
+      display:inline-block;
+      padding:16px 38px;
+      background:#2563eb;
+      color:white;
+      text-decoration:none;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:white;
+      color:#2563eb;
+      transform:translateY(-3px);
+    }
+
+    /* ===== HERO IMAGE ===== */
+
+    .hero-image img{
+      width:420px;
+      max-width:100%;
+    }
+
+    /* ===== EXPERIENCE SECTION ===== */
+
+    .experience-section{
+      width:100%;
+      padding:100px 8%;
+      background:#e5e7eb;
+    }
+
+    .experience-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .experience-title h1{
+      font-size:3rem;
+      color:#17327c;
+      font-weight:800;
+    }
+
+    .experience-container{
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .experience-card{
+      width:230px;
+      min-height:390px;
+
+      background:white;
+      border-radius:22px;
+
+      padding:25px;
+
+      position:relative;
+      overflow:hidden;
+
+      border:2px solid #1d4ed8;
+
+      transition:0.4s ease;
+      cursor:pointer;
+
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .experience-card::before{
+      content:"";
+
+      position:absolute;
+
+      top:-100px;
+      left:-100px;
+
+      width:250px;
+      height:250px;
+
+      background:rgba(37,99,235,0.12);
+
+      border-radius:50%;
+
+      transition:0.5s;
+    }
+
+    .exp-icon{
+      font-size:32px;
+      margin-bottom:18px;
+
+      position:relative;
+      z-index:2;
+    }
+
+    .experience-card h2{
+      color:#17327c;
+      font-size:22px;
+      margin-bottom:18px;
+
+      position:relative;
+      z-index:2;
+
+      transition:0.3s;
+    }
+
+    .experience-card p{
+      color:#444;
+      line-height:1.8;
+      font-size:14px;
+
+      position:relative;
+      z-index:2;
+
+      transition:0.3s;
+    }
+
+    .experience-card:hover{
+      transform:translateY(-12px) scale(1.04);
+
+      background:linear-gradient(
+        135deg,
+        #1d4ed8,
+        #172554
+      );
+
+      box-shadow:0 15px 35px rgba(37,99,235,0.35);
+    }
+
+    .experience-card:hover::before{
+      transform:scale(1.5);
+      background:rgba(255,255,255,0.08);
+    }
+
+    .experience-card:hover h2,
+    .experience-card:hover p{
+      color:white;
+    }
+
+    .experience-card:hover .exp-icon{
+      transform:scale(1.2) rotate(8deg);
+      transition:0.3s;
+    }
+
+    /* ===== GALLERY SECTION ===== */
+
+    .gallery-section{
+      width:100%;
+      padding:100px 8% 80px;
+      background:#f1f5f9;
+    }
+
+    .gallery-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .gallery-title h1{
+      font-size:3rem;
+      color:#0f172a;
+    }
+
+    /* ===== GALLERY GRID ===== */
+
+    .gallery-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:22px;
+    }
+
+    /* ===== GALLERY CARD ===== */
+
+    .gallery-card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s ease;
+      cursor:pointer;
+
+      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .gallery-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 30px rgba(37,99,235,0.25);
+    }
+
+    .gallery-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+
+      transition:0.5s ease;
+    }
+
+    .gallery-card:hover img{
+      transform:scale(1.05);
+    }
+
+    /* ===== GALLERY TEXT ===== */
+
+    .gallery-content{
+      padding:18px;
+    }
+
+    .gallery-content h3{
+      font-size:1.1rem;
+      color:#132c74;
+      margin-bottom:10px;
+    }
+
+    .gallery-content p{
+      font-size:14px;
+      color:#555;
+      line-height:24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    @media(max-width:950px){
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding-top:150px;
+      }
+
+      .hero-text h1{
+        font-size:3.5rem;
+        line-height:65px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+      }
+
+      .hero-image img{
+        width:320px;
+        margin-bottom:40px;
+      }
+    }
+/* ===== SKILLS SECTION ===== */
+
+.skills-section{
+  width:100%;
+  padding:100px 8%;
+  background:#0f172a;
+  color:white;
+}
+
+.skills-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.skills-title h1{
+  font-size:3rem;
+  color:#60a5fa;
+}
+
+.skills-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+  gap:25px;
+  text-align:center;
+}
+
+.skill-card{
+  background:#111827;
+  padding:25px;
+  border-radius:20px;
+  transition:0.3s;
+  border:1px solid #1d4ed8;
+}
+
+.skill-card:hover{
+  transform:translateY(-8px);
+  background:#1d4ed8;
+}
+
+.skill-card img{
+  width:60px;
+  margin-bottom:10px;
+}
+
+.skill-card h3{
+  font-size:16px;
+}
+
+/* ===== CONTACT SECTION ===== */
+
+.contact-section{
+  width:100%;
+  padding:100px 8%;
+  background:#f1f5f9;
+}
+
+.contact-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.contact-title h1{
+  font-size:3rem;
+  color:#0f172a;
+}
+
+.contact-container{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.contact-card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  width:250px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.contact-card:hover{
+  transform:translateY(-8px);
+}
+
+.contact-icon{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.contact-card h3{
+  color:#1d4ed8;
+  margin-bottom:10px;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">My College Diary</div>
+
+  <ul>
+  <li><a href="#">HOME</a></li>
+  <li><a href="#experience">EXPERIENCE</a></li>
+  <li><a href="#gallery">GALLERY</a></li>
+  <li><a href="#skills">SKILLS</a></li>
+  <li><a href="#contact">CONTACT</a></li>
+</ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h3>Hello, I'm</h3>
+
+      <h1>
+        HANS GABRIEL <br>
+        ORIJUELA
+      </h1>
+
+      <h2>BSIT STUDENT</h2>
+
+      <p>
+        Welcome to my personal college diary website filled with memories,
+        experiences, projects, and achievements as an IT student.
+      </p>
+
+      <a href="#gallery" class="btn">Explore Gallery</a>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="self.png" alt="Student Photo">
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+
+  <section class="experience-section" id="experience">
+
+    <div class="experience-title">
+      <h1>College Experience</h1>
+    </div>
+
+    <div class="experience-container">
+
+      <div class="experience-card">
+
+        <div class="exp-icon">📘</div>
+
+        <h2>Before College</h2>
+
+        <p>
+          Before entering college, I already had experience in Python
+          programming and explored AI-related projects such as facial
+          recognition and motion detection systems.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <div class="exp-icon">💻</div>
+
+        <h2>1st Year - 1st Semester</h2>
+
+        <p>
+          I started learning Java and VB.NET which helped me understand
+          programming logic and application development.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <div class="exp-icon">🗄️</div>
+
+        <h2>1st Year - 2nd Semester</h2>
+
+        <p>
+          I improved my database knowledge using MySQL and Microsoft Access
+          while developing systems in VB.NET.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <div class="exp-icon">🎨</div>
+
+        <h2>2nd Year - 1st Semester</h2>
+
+        <p>
+          I focused on improving user interface design and integrating
+          databases with desktop applications.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <div class="exp-icon">🚀</div>
+
+        <h2>2nd Year - 2nd Semester</h2>
+
+        <p>
+          I explored HTML, CSS, AI integration, and modern web technologies
+          using GPT4All and Ollama.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <div class="exp-icon">✨</div>
+
+        <h2>Keep Exploring...</h2>
+
+        <p>
+          My journey in IT continues as I improve my skills in programming,
+          AI development, web technologies, and system integration.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+
+  <section class="gallery-section" id="gallery">
+
+    <div class="gallery-title">
+      <h1>My Gallery</h1>
+    </div>
+
+    <div class="gallery-container">
+
+      <!-- CARD 1 -->
+      <div class="gallery-card">
+        <img src="hansii.jpg" alt="">
+        <div class="gallery-content">
+          <h3>First Year College</h3>
+          <p>A memorable moment that inspired me to pursue IT even more.</p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="gallery-card">
+        <img src="complete.jpg" alt="">
+        <div class="gallery-content">
+          <h3>VisionGuard Exhibition</h3>
+          <p>A memorable picture with my group during our project exhibition.</p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="gallery-card">
+        <img src="research memories.jpeg" alt="">
+        <div class="gallery-content">
+          <h3>Research Memories</h3>
+          <p>A bonding moment during our research journey together.</p>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="gallery-card">
+        <img src="champion.jpg" alt="">
+        <div class="gallery-content">
+          <h3>Sportfest Champion</h3>
+          <p>IT Department crowned in Sport Fest.</p>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="gallery-card">
+        <img src="childhood.jpg" alt="">
+        <div class="gallery-content">
+          <h3>Childhood Friends</h3>
+          <p>Friends since childhood who became like brothers to me.</p>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="gallery-card">
+        <img src="firstcof.jpg" alt="">
+        <div class="gallery-content">
+          <h3>First Circle in College</h3>
+          <p>My first circle in college life with my closest classmates.</p>
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="gallery-card">
+        <img src="pamele.jpg" alt="">
+        <div class="gallery-content">
+          <h3>Family</h3>
+          <p>My greatest source of love, strength, and motivation.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- SKILLS -->
+<section class="skills-section" id="skills">
+
+  <div class="skills-title">
+    <h1>Skills</h1>
+  </div>
+
+  <div class="skills-container">
+
+    <div class="skill-card">
+      <img src="python.jpg" alt="">
+      <h3>Python</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="mysql.png" alt="">
+      <h3>MySQL</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="vbnet.png" alt="">
+      <h3>VB.NET</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="html.png" alt="">
+      <h3>HTML</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="css.png" alt="">
+      <h3>CSS</h3>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+
+  <div class="contact-title">
+    <h1>Contact Me</h1>
+  </div>
+
+  <div class="contact-container">
+
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <h3>Email</h3>
+      <p>hansorijuela1@gmail.com</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">📘</div>
+      <h3>Facebook</h3>
+      <p>Hans Orijuela</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">📱</div>
+      <h3>Phone</h3>
+      <p>0991 781 2599</p>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
